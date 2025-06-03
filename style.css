@@ -1,0 +1,570 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+.container {
+    max-width: 800px !important;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+.user-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    display: none;
+}
+.course-list {
+    margin-top: 20px;
+}
+.playback-status {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e3f2fd;
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+}
+.playback-status.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.playback-info {
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.playback-progress {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+.chapter-list {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: white;
+}
+.chapter-item {
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.chapter-item.completed {
+    color: #00A600;
+    background-color: rgba(0, 166, 0, 0.1);
+}
+.chapter-item.in-progress {
+    color: #FF8000;
+    background-color: rgba(255, 128, 0, 0.1);
+}
+.chapter-item.not-started {
+    color: #EA0000;
+    background-color: rgba(234, 0, 0, 0.1);
+}
+.chapter-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.chapter-item.current {
+    background-color: #e3f2fd;
+    border-color: #2196F3;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+}
+.course-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+.course-item:hover {
+    background-color: #f9f9f9;
+}
+.course-item.active {
+    background-color: #e3f2fd;
+    border-color: #2196F3;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+}
+.log-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+.log-entries {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+.log-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+    position: sticky;
+    bottom: 0;
+    background: #f8f9fa;
+    padding-bottom: 4px;
+    z-index: 2;
+}
+.log-entry {
+    margin: 5px 0;
+    font-family: monospace;
+    font-size: 12px;
+    color: #333;
+}
+.copy-button {
+    margin-top: 10px;
+    background-color: #2196F3;
+}
+.copy-button:hover {
+    background-color: #1976D2;
+}
+.copy-status {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: none;
+    z-index: 1000;
+}
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.course-name {
+    font-weight: bold;
+    color: #333;
+}
+.course-score {
+    color: #d32f2f;
+}
+.chapter-info {
+    font-size: 14px;
+    color: #666;
+}
+.time-info {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+.score-composition-box {
+    min-width: 120px;
+    max-width: 220px;
+    font-size: 0.95em;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.score-composition-flex {
+    display: flex;
+    gap: 8px;
+}
+.score-composition-item {
+    text-align: center;
+    min-width: 48px;
+}
+.score-composition-ratio {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 2px;
+}
+.score-composition-score {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+.course-info-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+.course-name-box {
+    flex: 1 1 180px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.course-score-box {
+    min-width: 48px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-left: 4px;
+}
+#devModeSwitch {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 9999;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 120px;
+}
+.playback-status-title {
+    margin: 0 0 10px 0;
+    color: #2196F3;
+}
+.playback-chapter-title {
+    font-weight: bold;
+    color: #333;
+}
+.playback-time {
+    color: #666;
+    margin-top: 5px;
+}
+.progress-bar-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+.progress-controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+.playback-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-left: 15px;
+}
+.control-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+.play-button {
+    background-color: #4CAF50;
+    color: white;
+}
+.pause-button {
+    background-color: #FF8000;
+    color: white;
+}
+.control-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.control-button:active {
+    transform: scale(0.95);
+}
+.control-button svg {
+    width: 18px;
+    height: 18px;
+}
+.pause-log-button {
+    flex-shrink: 0;
+    width: 100px;
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.copy-log-button {
+    flex-shrink: 0;
+    width: 100px;
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.clear-log-button {
+    flex-shrink: 0;
+    width: 100px;
+    background-color: #FF9800;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.dev-mode-label {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.dev-mode-text {
+    margin-right: 8px;
+    font-size: 12px;
+    color: #333;
+}
+.dev-mode-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+.dev-mode-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.dev-mode-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 22px;
+    transition: .4s;
+}
+.dev-mode-circle {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: .4s;
+}
+.chapter-list-empty {
+    color: #666;
+    text-align: center;
+}
+.chapter-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chapter-status-text {
+    /* 颜色由JS动态设置 */
+}
+.score-composition-empty {
+    color: #bbb;
+} 
+#currentSemester {
+    color: #1976D2;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 8px 0 4px 0;
+    line-height: 1.5;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.playback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.auto-play-switch {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.auto-play-label {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.auto-play-text {
+    margin-right: 8px;
+    font-size: 12px;
+    color: #333;
+}
+.auto-play-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+.auto-play-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.auto-play-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 22px;
+    transition: .4s;
+}
+.auto-play-circle {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: .4s;
+}
+/* 课程学期标签样式 */
+.course-semester {
+    font-size: 12px;
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 10px;
+    display: inline-flex;
+    margin-top: 5px;
+    text-align: left;
+    width: fit-content;
+}
+
+/* 重修标记样式 */
+.retake-badge {
+    background-color: #ff5252;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+/* 记住密码复选框样式 */
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* 登录行样式 */
+.login-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.remember-password-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.remember-password-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}

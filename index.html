@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>汕大成考学习助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="username">用户名：</label>
+                <input type="text" id="username" value="">
+            </div>
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" value="">
+            </div>
+            <div class="login-row">
+                <button id="loginButton">登录</button>
+                <label class="remember-password-label">
+                    <input type="checkbox" id="rememberPassword"> 记住密码
+                </label>
+            </div>
+        </div>
+
+        <div class="user-info" id="userInfo">
+            <h3>欢迎，<span id="userName">用户</span></h3>
+        </div>
+        <div id="currentSemester"></div>
+        <div class="course-list" id="courseList">
+            <!-- 课程列表将在这里动态显示 -->
+        </div>
+
+        <div class="playback-status" id="playbackStatus">
+            <div class="playback-header">
+                <h3 class="playback-status-title">当前播放状态</h3>
+                <div class="auto-play-switch">
+                    <label for="autoPlayCheckbox" class="auto-play-label">
+                        <span class="auto-play-text">自动播放</span>
+                        <span class="auto-play-toggle">
+                            <input type="checkbox" id="autoPlayCheckbox" class="auto-play-checkbox" checked>
+                            <span id="autoPlaySlider" class="auto-play-slider"></span>
+                            <span id="autoPlayCircle" class="auto-play-circle"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="playback-info">
+                <div id="currentPlaybackChapter" class="playback-chapter-title">当前章节：未开始</div>
+                <div id="playbackTime" class="playback-time">播放时间：00:00 / 00:00</div>
+            </div>
+            <div class="playback-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="playbackProgressBar"></div>
+                </div>
+                <div class="progress-controls-container">
+                    <div class="progress-bar-info">
+                        <span id="playbackProgress">0%</span>
+                        <span id="playbackStatusText">等待开始</span>
+                    </div>
+                    <div class="playback-controls">
+                        <button id="playButton" class="control-button play-button" title="播放">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        <button id="pauseButton" class="control-button pause-button" title="暂停">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-list" id="playbackChapterList">
+                <!-- 章节列表将在这里动态显示 -->
+            </div>
+        </div>
+
+        <div class="log-container" id="logContainer">
+            <div class="log-entries" id="logEntries">
+                <!-- 日志将在这里动态显示 -->
+            </div>
+            <div class="log-buttons">
+                <button id="pauseLogButton" class="pause-log-button">暂停日志</button>
+                <button id="copyLogButton" class="copy-log-button">复制日志</button>
+                <button id="clearLogButton" class="clear-log-button">清除日志</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy-status" id="copyStatus">已复制到剪贴板</div>
+
+    <!-- 开发者模式开关 -->
+    <div id="devModeSwitch">
+        <label for="devModeCheckbox" class="dev-mode-label">
+            <span class="dev-mode-text">开发者模式</span>
+            <span class="dev-mode-switch">
+                <input type="checkbox" id="devModeCheckbox" class="dev-mode-checkbox">
+                <span id="devModeSlider" class="dev-mode-slider"></span>
+                <span id="devModeCircle" class="dev-mode-circle"></span>
+            </span>
+        </label>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html> 

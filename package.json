@@ -1,0 +1,43 @@
+{
+  "name": "shantou-ace-learning-assistant",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "build": {
+    "appId": "com.yourcompany.shantouacelearningassistant",
+    "productName": "汕大成考学习助手",
+    "mac": {
+      "category": "public.app-category.education",
+      "target": "dmg"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "preload.js",
+      "preload_study.js",
+      "study_injector.js",
+      "package.json"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^24.8.2"
+  }
+}
